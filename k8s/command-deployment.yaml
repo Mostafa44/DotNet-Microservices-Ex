@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: command
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: command
+  template:
+    metadata:
+      labels:
+        app: command
+    spec:
+      containers:
+      - image: mostafa448/commandservice
+        name: commandservice
