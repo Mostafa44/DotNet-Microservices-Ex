@@ -23,7 +23,7 @@ namespace CommandsService.EventProcessing
             switch(eventType)
             {
                 case EventType.PlatformPublished:
-                    //do something
+                    addPlatform(message);
                     break;
                 default:
                     break;
@@ -56,6 +56,8 @@ namespace CommandsService.EventProcessing
                     if(! repo.ExternalPlatformExists(plat.ExternalId))
                     {
                         repo.CreatePlatform(plat);
+                        repo.SaveChanges();
+                        Console.WriteLine("---> Platform Added");
                     }
                     else
                     {
